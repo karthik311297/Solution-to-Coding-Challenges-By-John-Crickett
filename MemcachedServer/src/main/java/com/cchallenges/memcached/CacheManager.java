@@ -13,7 +13,7 @@ public class CacheManager
     
     private CacheManager()
     {
-        cache = new ConcurrentHashMap<>();
+        cache = new HashMap<>();
     }
     
     public static CacheManager getInstance()

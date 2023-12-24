@@ -1,5 +1,7 @@
-# My attempt at coding few of the coding challenges by John Crickett.
+# My attempt at implementing few of the coding challenges by John Crickett.
 
-1.    Basic Web Server
+1. Write your own Web Server.
 
-2.    Basic Load Balancer
+2. Write your own Load Balancer.
+
+3. Write your own Memcached Server.

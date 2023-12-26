@@ -1,26 +1,19 @@
-package com.cchallenge.nats.model;
+package com.cchallenge.messaging.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Topic
 {
-    private int topicId;
     private String topicName;
     private List<Message> messages;
     private List<Subscriber> subscribers;
     
-    public Topic(String topicName, int topicId)
+    public Topic(String topicName)
     {
-        this.topicId = topicId;
         this.topicName = topicName;
         this.messages = new ArrayList<>();
         this.subscribers = new ArrayList<>();
-    }
-    
-    public int getTopicId()
-    {
-        return topicId;
     }
     
     public String getTopicName()

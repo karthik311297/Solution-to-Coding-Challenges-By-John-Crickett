@@ -1,4 +1,4 @@
-package com.cchallenge.nats.model;
+package com.cchallenge.messaging.model;
 
 public class Subscriber
 {
@@ -14,12 +14,15 @@ public class Subscriber
         return id;
     }
     
-    public void consumeMessage(Message message)
+    public String consumeMessage(Message message)
     {
         sleep(1000);
-        System.out.println(String.format("Subscriber: %d, has consumed message: %d which has the content: %s",
-                id, message.getMessageId(), message.getMessageContent()));
+        System.out.println(String.format("Subscriber: %d, is consuming message: %s",
+                id, message.getMessageContent()));
         sleep(1000);
+        System.out.println(String.format("Subscriber: %d, has consumed message: %s",
+                id, message.getMessageContent()));
+        return message.getMessageContent();
     }
     
     private void sleep(long millis)

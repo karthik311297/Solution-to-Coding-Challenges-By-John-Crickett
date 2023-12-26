@@ -1,10 +1,12 @@
-package com.cchallenge.nats.mq;
+package com.cchallenge.messaging.mq;
 
+import java.io.IOException;
 import java.util.List;
 
-import com.cchallenge.nats.model.Message;
-import com.cchallenge.nats.model.Subscriber;
-import com.cchallenge.nats.model.Topic;
+import com.cchallenge.messaging.model.Message;
+import com.cchallenge.messaging.model.Subscriber;
+import com.cchallenge.messaging.model.Topic;
+import com.cchallenge.nats.SubscribersManager;
 
 public class SubscriptionRunner implements Runnable
 {
@@ -41,8 +43,23 @@ public class SubscriptionRunner implements Runnable
                 }
             }
             Message message = messages.get(offset);
-            subscriber.consumeMessage(message);
+            String consumedMessage = subscriber.consumeMessage(message);
+            writeToSocket(consumedMessage);
             offset++;
+        }
+    }
+    
+    private void writeToSocket(String consumedMessage)
+    {
+        try
+        {
+            SubscribersManager.getInstance().getSubscriberBuffer(subscriber.getId()).write(String.format("%s%s", String.format("MSG %s %s",
+                    topic.getTopicName(), consumedMessage), System.lineSeparator()));
+            SubscribersManager.getInstance().getSubscriberBuffer(subscriber.getId()).flush();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Connection is already closed");
         }
     }
 }

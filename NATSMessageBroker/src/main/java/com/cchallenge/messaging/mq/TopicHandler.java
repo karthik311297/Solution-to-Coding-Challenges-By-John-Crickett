@@ -1,8 +1,8 @@
-package com.cchallenge.nats.mq;
+package com.cchallenge.messaging.mq;
 
-import com.cchallenge.nats.model.Message;
-import com.cchallenge.nats.model.Subscriber;
-import com.cchallenge.nats.model.Topic;
+import com.cchallenge.messaging.model.Message;
+import com.cchallenge.messaging.model.Subscriber;
+import com.cchallenge.messaging.model.Topic;
 
 public class TopicHandler
 {

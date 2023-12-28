@@ -37,11 +37,16 @@ public class SocketConnectionManager
                                 bufferedWriter.write(String.format("Disconnected%s", System.lineSeparator()));
                                 bufferedWriter.flush();
                                 done = true;
+                                if(subscriberId != null)
+                                {
+                                    SubscribersManager.getInstance().removeSubscriber(subscriberId);
+                                    SubscribersManager.getInstance().removeSubscriberBuffer(subscriberId);
+                                }
                             }
                             else if(clientRequest.equalsIgnoreCase(Commands.CONNECT.toString()))
                             {
                                 subscriberId = SubscribersManager.getInstance().createNewSubscriber(bufferedWriter);
-                                bufferedWriter.write(String.format("OK%s", System.lineSeparator()));
+                                bufferedWriter.write(String.format("+OK%s", System.lineSeparator()));
                                 bufferedWriter.flush();
                             }
                             else

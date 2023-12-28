@@ -12,12 +12,15 @@ public class Constants
         PING,
         PUB,
         SUB,
+        UNSUB,
         CREATETOPIC,
         INVALID,
         STOP
     }
     
     public static final Set<String> validCommands = new HashSet<>(Arrays.asList(Commands.CONNECT.toString(),
-            Commands.PING.toString(), Commands.PUB.toString(), Commands.SUB.toString(), Commands.CREATETOPIC.toString(), Commands.STOP.toString()));
+            Commands.PING.toString(), Commands.PUB.toString(),
+            Commands.SUB.toString(), Commands.CREATETOPIC.toString(),
+            Commands.STOP.toString(), Commands.UNSUB.toString()));
     
 }

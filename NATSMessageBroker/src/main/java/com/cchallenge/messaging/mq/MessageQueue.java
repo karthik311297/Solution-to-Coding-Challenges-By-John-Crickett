@@ -50,4 +50,10 @@ public class MessageQueue
         SubscriptionRunner subscriptionRunner = new SubscriptionRunner(topic, subscriber);
         new Thread(subscriptionRunner).start();
     }
+    
+    public void unsubscribeToTopic(String topicName, Subscriber subscriber)
+    {
+        TopicHandler handler = topicHandlers.get(topicName);
+        handler.removeSubscriber(subscriber);
+    }
 }

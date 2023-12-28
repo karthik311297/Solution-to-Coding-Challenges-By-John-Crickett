@@ -45,6 +45,16 @@ public class SubscribersManager
         return subscriberBufferMap.get(subscriberID);
     }
     
+    public void removeSubscriber(int subscriberID)
+    {
+        subscriberMap.remove(subscriberID);
+    }
+    
+    public void removeSubscriberBuffer(int subscriberID)
+    {
+        subscriberBufferMap.remove(subscriberID);
+    }
+    
     // Exposed for Testing
     protected int getNumSubscribers()
     {

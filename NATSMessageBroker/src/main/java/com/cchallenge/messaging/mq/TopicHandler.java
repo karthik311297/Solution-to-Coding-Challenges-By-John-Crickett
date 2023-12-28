@@ -30,4 +30,13 @@ public class TopicHandler
             System.out.println(String.format("Subscriber: %d has started subscribing to topic: %s", subscriber.getId(), topic.getTopicName()));
         }
     }
+    
+    public void removeSubscriber(Subscriber subscriber)
+    {
+        synchronized(this)
+        {
+            topic.getSubscribers().remove(subscriber);
+            System.out.println(String.format("Subscriber: %d has stopped subscribing to topic: %s", subscriber.getId(), topic.getTopicName()));
+        }
+    }
 }

@@ -16,14 +16,18 @@ public class CommandHandler
                 return "PONG";
             case CREATETOPIC:
                 TopicsManager.getInstance().createNewTopic(splitCommand[1]);
-                return "OK";
+                return "+OK";
             case SUB:
                 MessageQueue.getInstance().subscribeToTopic(splitCommand[1],
                         SubscribersManager.getInstance().getSubscriber(subscriberID));
-                return "OK";
+                return "+OK";
             case PUB:
                 MessageQueue.getInstance().publishMessageToTopic(splitCommand[1], new Message(splitCommand[2]));
-                return "OK";
+                return "+OK";
+            case UNSUB:
+                MessageQueue.getInstance().unsubscribeToTopic(splitCommand[1],
+                        SubscribersManager.getInstance().getSubscriber(subscriberID));
+                return "+OK, Unsubscribed from the topic";
             default:
                 return "Invalid command";
         }

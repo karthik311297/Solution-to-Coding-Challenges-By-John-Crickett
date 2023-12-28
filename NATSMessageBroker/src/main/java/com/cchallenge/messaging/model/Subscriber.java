@@ -1,5 +1,7 @@
 package com.cchallenge.messaging.model;
 
+import java.util.Objects;
+
 public class Subscriber
 {
     private int id;
@@ -35,5 +37,20 @@ public class Subscriber
         {
             System.out.println(String.format("Subscriber: %d, has got this error: %s", id, e));
         }
+    }
+    
+    @Override
+    public boolean equals(Object o)
+    {
+        if(this == o) return true;
+        if(!(o instanceof Subscriber)) return false;
+        Subscriber that = (Subscriber)o;
+        return getId() == that.getId();
+    }
+    
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(getId());
     }
 }
